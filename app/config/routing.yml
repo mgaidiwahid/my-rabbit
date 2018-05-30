@@ -1,3 +1,8 @@
+mr_back_office:
+    resource: "@MRBackOfficeBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
 mr_main:
     resource: "@MRMainBundle/Controller/"
     type:     annotation

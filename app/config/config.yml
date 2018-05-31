@@ -94,3 +94,7 @@ fos_user:
     from_email:
         address: mail@domain.tld
         sender_name: user
+
+easy_admin:
+    entities:
+        - MR\BackOfficeBundle\Entity\Lapin

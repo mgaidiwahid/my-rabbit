@@ -2,7 +2,10 @@ mr_back_office:
     resource: "@MRBackOfficeBundle/Controller/"
     type:     annotation
     prefix:   /admin
-
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /easyadmin
 mr_main:
     resource: "@MRMainBundle/Controller/"
     type:     annotation

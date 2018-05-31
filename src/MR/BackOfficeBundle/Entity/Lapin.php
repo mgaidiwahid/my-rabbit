@@ -16,17 +16,25 @@ class Lapin
      */
     private $id;
     /**
-     * @ORM\Column(type="string")
-     */
-    private $poids;
-    /**
      * @ORM\Column(name="date", type="datetime")
      */
     private $date_naissance;
     /**
      * @ORM\Column(name="sexe", type="boolean")
      */
-    private $sexe;    
+    private $sexe;  
+    /**
+     * @ORM\Column(name="numero", type="integer")
+     */
+    private $numero;  
+    /**
+     * @ORM\Column(name="couleur", type="string", length=255)
+     */
+    private $couleur;
+    /**
+     * @ORM\Column(name="race", type="string", length=255)
+     */
+    private $race;    
     /**
      * Get id
      *
@@ -113,5 +121,77 @@ class Lapin
     public function getSexe()
     {
         return $this->sexe;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Lapin
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param string $couleur
+     *
+     * @return Lapin
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set race
+     *
+     * @param string $race
+     *
+     * @return Lapin
+     */
+    public function setRace($race)
+    {
+        $this->race = $race;
+
+        return $this;
+    }
+
+    /**
+     * Get race
+     *
+     * @return string
+     */
+    public function getRace()
+    {
+        return $this->race;
     }
 }

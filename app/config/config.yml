@@ -96,5 +96,18 @@ fos_user:
         sender_name: user
 
 easy_admin:
+    site_name: My<i>Rabbit</i>   
     entities:
-        - MR\BackOfficeBundle\Entity\Lapin
+        Lapin:
+            class: MR\BackOfficeBundle\Entity\Lapin
+            form:
+                fields:
+                    - numero
+                    - date_naissance
+                    - couleur
+                    - race
+                    - sexe
+                    - { property: 'sexe', type: 'choice',type_options: {choices: {'Male':'1', 'Female':'0'}} }
+            new:
+                fields:
+                    - { property: 'sexe', type_options: { required: true } }

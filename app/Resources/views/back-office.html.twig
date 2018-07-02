@@ -1,12 +1,13 @@
+{# add navigation current nav mark #}
+{% set route = app.request.get('_route') %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-</head>
-<body>
+    <title>{% block title %}Back-Office{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
     @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -93,21 +94,39 @@
         font-size: 12px;
     }
 </style>
+</head>
+<body>
+    
+<div class="container">
 
-{% for type, messages in app.session.flashBag.all %}
-    {% for message in messages %}
-        <div class="{{ type }}">
-            {{ message|trans({}, 'FOSUserBundle') }}
+    {% block header %}{% endblock %}
+
+    {% block flash %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+
+    <!-- container content - BEGIN -->
+    <div class="container container-content">
+        <div id="layout-view" class="view view-villa-all">
+            {% block content %}{% endblock %}
         </div>
-    {% endfor %}
-{% endfor %}
+    </div>
+    <!-- container content - END -->
 
-{% block fos_user_content %}{% endblock %}
+    {% block footer %}{% endblock footer %}
 
-<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
-
+</div>
 </body>
 </html>

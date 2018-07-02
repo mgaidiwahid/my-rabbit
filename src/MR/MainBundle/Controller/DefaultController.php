@@ -13,6 +13,6 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('@MRMain/Default/index.html.twig');
-
+        //return $this->redirect('login');
     }
 }

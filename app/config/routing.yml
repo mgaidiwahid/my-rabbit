@@ -9,7 +9,7 @@ easy_admin_bundle:
 mr_main:
     resource: "@MRMainBundle/Controller/"
     type:     annotation
-    prefix:   /easyadmin
+    prefix:   /
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

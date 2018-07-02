@@ -96,10 +96,24 @@ fos_user:
         sender_name: user
 
 easy_admin:
-    site_name: My<i>Rabbit</i>   
+    site_name: My<i>Rabbit</i>
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'   
     entities:
         Lapin:
             class: MR\BackOfficeBundle\Entity\Lapin
+            label: 'Lapin'
+            list:
+                title: "Liste des races de lapins" 
+                fields:
+                    - numero
+                    - date_naissance
+                    - couleur
+                    - race
+                    - sexe
+                    - { property: 'sexe', type: 'boolean' }                
             form:
                 fields:
                     - numero
@@ -111,3 +125,55 @@ easy_admin:
             new:
                 fields:
                     - { property: 'sexe', type_options: { required: true } }
+                title:  'Ajout Lapin'
+            edit:
+                title:  'Modification Informations Lapin'                
+                    
+        Engraissement:
+            class: MR\BackOfficeBundle\Entity\Engraissement 
+            label: 'Engraissement'
+            
+        MiseBas:
+            class: MR\BackOfficeBundle\Entity\MiseBas
+            label: 'Mise Bas'
+            list:
+                title: "Liste des cages"  
+            form:
+                fields:
+                    - date_mise_bas
+                    - nombre_vivants
+                    - nombre_morts
+                    - nombre_adoptes
+                    - nombre_rejetes
+                    - { property: 'lapin', type: 'easyadmin_autocomplete', type_options: { class: 'MR\BackOfficeBundle\Entity\Lapin' } }
+        Saillie:
+            class: MR\BackOfficeBundle\Entity\Saillie
+            label: 'Saillie'
+            list:
+                title: "Liste  des saillies"  
+            form:
+                fields:
+                    - femelle
+                    - male
+                    - palpation
+                    - { property: 'palpation', type: 'choice',type_options: {choices: {'Succés':'1', 'Echec':'0'}} }
+                    - date_saillie
+            new:
+                fields:
+                    - { property: 'femelle', type_options: { required: true } } 
+                    - { property: 'male', type_options: { required: true } } 
+                    - { property: 'palpation', type_options: { required: true } }
+        Servage:
+            class: MR\BackOfficeBundle\Entity\Servage
+            label: 'Sevrage'
+            list:
+                title: "Liste  des Sevrage"
+            form:
+                fields:
+                    - date_servage
+                    - nbr_lapereaux
+                    - poids_totale
+                    - femelle
+            new:
+                fields:
+                    - { property: 'femelle', type_options: { required: false } } 

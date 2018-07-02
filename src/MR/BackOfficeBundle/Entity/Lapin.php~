@@ -34,18 +34,26 @@ class Lapin
     /**
      * @ORM\Column(name="race", type="string", length=255)
      */
-    private $race;    
-    /**
-     * Get id
-     *
-     * @return integer
-     */
+    private $race; 
+    
+
+  
+    public function __toString() {
+        
+    return (string) $this->getId();
+    }
+    
     public function __construct()
     {
 
     $this->date_naissance = new \Datetime();
-    }    
+    }  
     
+    /**
+     * Get id
+     *
+     * @return integer
+     */    
     public function getId()
     {
         return $this->id;
@@ -193,5 +201,150 @@ class Lapin
     public function getRace()
     {
         return $this->race;
+    }
+
+
+    /**
+     * Add sailly
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailly
+     *
+     * @return Lapin
+     */
+    public function addSailly(\MR\BackOfficeBundle\Entity\Saillie $sailly)
+    {
+        $this->saillies[] = $sailly;
+
+        return $this;
+    }
+
+    /**
+     * Remove sailly
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailly
+     */
+    public function removeSailly(\MR\BackOfficeBundle\Entity\Saillie $sailly)
+    {
+        $this->saillies->removeElement($sailly);
+    }
+
+    /**
+     * Get saillies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSaillies()
+    {
+        return $this->saillies;
+    }
+
+    /**
+     * Add sailliesMale
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesMale
+     *
+     * @return Lapin
+     */
+    public function addSailliesMale(\MR\BackOfficeBundle\Entity\Saillie $sailliesMale)
+    {
+        $this->saillies_male[] = $sailliesMale;
+
+        return $this;
+    }
+
+    /**
+     * Remove sailliesMale
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesMale
+     */
+    public function removeSailliesMale(\MR\BackOfficeBundle\Entity\Saillie $sailliesMale)
+    {
+        $this->saillies_male->removeElement($sailliesMale);
+    }
+
+    /**
+     * Get sailliesMale
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSailliesMale()
+    {
+        return $this->saillies_male;
+    }
+
+    /**
+     * Add sailliesFemelle
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle
+     *
+     * @return Lapin
+     */
+    public function addSailliesFemelle(\MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle)
+    {
+        $this->saillies_femelle[] = $sailliesFemelle;
+
+        return $this;
+    }
+
+    /**
+     * Remove sailliesFemelle
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle
+     */
+    public function removeSailliesFemelle(\MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle)
+    {
+        $this->saillies_femelle->removeElement($sailliesFemelle);
+    }
+
+    /**
+     * Get sailliesFemelle
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSailliesFemelle()
+    {
+        return $this->saillies_femelle;
+    }
+
+    /**
+     * Set sailliesMale
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesMale
+     *
+     * @return Lapin
+     */
+    public function setSailliesMale(\MR\BackOfficeBundle\Entity\Saillie $sailliesMale = null)
+    {
+        $this->saillies_male = $sailliesMale;
+
+        return $this;
+    }
+
+    /**
+     * Set sailliesFemelle
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle
+     *
+     * @return Lapin
+     */
+    public function setSailliesFemelle(\MR\BackOfficeBundle\Entity\Saillie $sailliesFemelle = null)
+    {
+        $this->saillies_femelle = $sailliesFemelle;
+
+        return $this;
+    }
+
+    /**
+     * Set saillies
+     *
+     * @param \MR\BackOfficeBundle\Entity\Saillie $saillies
+     *
+     * @return Lapin
+     */
+    public function setSaillies(\MR\BackOfficeBundle\Entity\Saillie $saillies)
+    {
+        $this->saillies = $saillies;
+
+        return $this;
     }
 }

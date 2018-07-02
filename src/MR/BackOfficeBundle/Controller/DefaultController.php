@@ -12,6 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@MRBackOffice/Default/index.html.twig');
+        //return $this->render('@MRBackOffice/Default/index.html.twig');
+        return $this->container->get('templating')->renderResponse('MRMainBundle:Security:login.html.twig', $data);
     }
 }

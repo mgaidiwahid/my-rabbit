@@ -1,0 +1,4 @@
+easy_admin_bundle:
+    resource: "@MRBackOfficeBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /dashboard/

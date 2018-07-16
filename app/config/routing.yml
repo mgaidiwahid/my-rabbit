@@ -1,7 +1,4 @@
-mr_back_office:
-    resource: "@MRBackOfficeBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
+
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
     type:     annotation
@@ -10,6 +7,9 @@ mr_main:
     resource: "@MRMainBundle/Controller/"
     type:     annotation
     prefix:   /
+mr_statistics:
+    resource: "@MRBackOfficeBundle/Resources/config/routing.yml"
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

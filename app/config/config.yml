@@ -97,6 +97,17 @@ fos_user:
         sender_name: user
 
 easy_admin:
+      
+    design:
+        menu:
+            - {label:"Tableau de bord", route:'dashboard'}            
+            - Lapin
+            #bande
+            - Saillie
+            - MiseBas 
+            - Servage            
+            - Engraissement
+
     site_name: My<i>Rabbit</i>
     formats:
         date:     'd/m/Y'
@@ -114,7 +125,7 @@ easy_admin:
                     - couleur
                     - race
                     - sexe
-                    - { property: 'sexe', type: 'boolean' }                
+                    - { property: 'sexe', type: 'toggle' }                
             form:
                 fields:
                     - numero

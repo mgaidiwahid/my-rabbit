@@ -119,6 +119,7 @@ class Lapin
         $this->sexe = $sexe;
 
         return $this;
+        
     }
 
     /**

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="misebas")
+ * @ORM\Entity(repositoryClass="MR\BackOfficeBundle\Repository\MiseBasRepository")
  */
 class MiseBas
 {

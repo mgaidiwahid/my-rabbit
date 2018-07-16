@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/srv/htdocs/my_rabbit/app/config/security.yml</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/src/MR/BackOfficeBundle/Resources/views/Stat/index.html.twig</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/src/MR/BackOfficeBundle/Controller/DefaultController.php</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/src/MR/BackOfficeBundle/Controller/StatController.php</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/src/MR/BackOfficeBundle/Resources/config/routing.yml</file>
             <file>file:/E:/srv/htdocs/my_rabbit/app/config/routing.yml</file>
             <file>file:/E:/srv/htdocs/my_rabbit/app/config/config.yml</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/app/Resources/views/base.html.twig</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/app/Resources/views/back-office.html.twig</file>
+            <file>file:/E:/srv/htdocs/my_rabbit/src/MR/BackOfficeBundle/Controller/SecurityController.php</file>
         </group>
     </open-files>
 </project-private>

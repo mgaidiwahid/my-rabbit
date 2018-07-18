@@ -35,7 +35,12 @@
 
             <div class="info-box-content">
               <span class="info-box-text">nOMBRE MIS BAS</span>
-              <span class="info-box-number"><a href="?entity=MiseBas">{{ nbr_misebas }}</a></span>
+              <span class="info-box-number">
+                  {% for nbr in nbr_misebas %}
+                  <a href="?entity=MiseBas">{{ nbr[loop.index] }}</a>- 
+                  <a href="?entity=Bande">{{ nbr.libelle }}</a>
+                  {% endfor %}
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>

@@ -97,16 +97,20 @@ fos_user:
         sender_name: user
 
 easy_admin:
-      
     design:
         menu:
-            - {label:"Tableau de bord", route:'dashboard'}            
+            - { label:"Tableau de bord", route:'dashboard' }      
             - Lapin
-            #bande
+            - Bande
             - Saillie
             - MiseBas 
             - Servage            
-            - Engraissement
+            - Engraissement           
+    assets:
+        js: ['assets/js/jquery.datetimepicker.full.js', 'assets/js/initDatePicker.js']
+        css: ['assets/css/jquery.datetimepicker.css'] 
+        menu:
+
 
     site_name: My<i>Rabbit</i>
     formats:
@@ -120,6 +124,7 @@ easy_admin:
             list:
                 title: "Liste des races de lapins" 
                 fields:
+                    - id
                     - numero
                     - date_naissance
                     - couleur
@@ -129,7 +134,9 @@ easy_admin:
             form:
                 fields:
                     - numero
-                    - date_naissance
+                    #- date_naissance
+                    #https://youtu.be/yUv8UHhpN_8?t=1507
+                    - { property: 'date_naissance', label: 'date de naissance', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
                     - couleur
                     - race
                     - sexe
@@ -140,24 +147,78 @@ easy_admin:
                 title:  'Ajout Lapin'
             edit:
                 title:  'Modification Informations Lapin'                
-                    
+        Bande:
+            class: MR\BackOfficeBundle\Entity\Bande
+            label: 'Bande'                    
+            list:
+                title: "Cycles de vies" 
+                fields:
+                    - id
+                    - libelle                    
+                    - date_debut
+                    - date_fin
+            new:   
+                title:  'Ajout Cycle'
+            edit:   
+                title:  'Modifier Cycle'                   
+            form:
+                fields:
+                    - libelle                     
+                    - { property: 'date_debut', label: 'Date Début', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
+                    - { property: 'date_fin', label: 'Date Fin', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
         Engraissement:
             class: MR\BackOfficeBundle\Entity\Engraissement 
             label: 'Engraissement'
-            
+            list:
+                fields:
+                    - id
+                    - numero_cage
+                    - date
+                    - nombre_laperaux
+                    - poids
+                    - bande
+            new:   
+                title:  'Ajout Engraissement' 
+                fields:
+                    - numero_cage
+                    - { property: 'date', label: 'Date', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
+                    - nombre_laperaux
+                    - poids
+                    - observation
+                    - bande
+            edit:   
+                title:  'Modifier Engraissement'
+                fields:
+                    - numero_cage
+                    - { property: 'date', label: 'Date', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
+                    - nombre_laperaux
+                    - poids
+                    - observation
+                    - bande                
         MiseBas:
             class: MR\BackOfficeBundle\Entity\MiseBas
             label: 'Mise Bas'
             list:
-                title: "Liste des cages"  
+                title: "Liste des cages"
+                fields:
+                    - id
+                    - { property: 'date_mise_bas', label: 'Date MiseBas', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
+                    - nombre_vivants
+                    - nombre_morts
+                    - nombre_adoptes
+                    - nombre_rejetes
+                    - lapin
+                    - bande                 
+
             form:
                 fields:
-                    - date_mise_bas
+                    - { property: 'date_mise_bas', label: 'Date MiseBas', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
                     - nombre_vivants
                     - nombre_morts
                     - nombre_adoptes
                     - nombre_rejetes
                     - { property: 'lapin', type: 'easyadmin_autocomplete', type_options: { class: 'MR\BackOfficeBundle\Entity\Lapin' } }
+                    - bande                    
         Saillie:
             class: MR\BackOfficeBundle\Entity\Saillie
             label: 'Saillie'
@@ -170,11 +231,14 @@ easy_admin:
                     - palpation
                     - { property: 'palpation', type: 'choice',type_options: {choices: {'Succés':'1', 'Echec':'0'}} }
                     - date_saillie
+                    - bande
             new:
                 fields:
                     - { property: 'femelle', type_options: { required: true } } 
                     - { property: 'male', type_options: { required: true } } 
                     - { property: 'palpation', type_options: { required: true } }
+                    - { property: 'date_saillie', label: 'Date Saillie', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }
+                    - { property: 'bande', type_options: { required: false } }                     
         Servage:
             class: MR\BackOfficeBundle\Entity\Servage
             label: 'Sevrage'
@@ -186,6 +250,15 @@ easy_admin:
                     - nbr_lapereaux
                     - poids_totale
                     - femelle
+                    - bande
             new:
                 fields:
-                    - { property: 'femelle', type_options: { required: false } } 
+                    - { property: 'date_servage', label: 'Date Sevrage', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }                    
+                    - { property: 'femelle', type_options: { required: false } }
+                    - { property: 'bande', type_options: { required: false } }
+            edit:   
+                title:  'Modifier Sevrage'
+                fields:
+                    - { property: 'date_servage', label: 'Date Sevrage', type_options: {'widget': 'single_text', 'format': 'yyyy-MM-dd HH:mm', 'attr': {'class': 'datepicker'}} }                    
+                    - { property: 'femelle', type_options: { required: false } }
+                    - { property: 'bande', type_options: { required: false } }                

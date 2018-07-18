@@ -40,7 +40,7 @@ class Lapin
   
     public function __toString() {
         
-    return (string) $this->getId();
+    return (string) $this->getNumero();
     }
     
     public function __construct()

@@ -35,6 +35,13 @@ class Engraissement
      * @ORM\Column(name="observation", type="text")
      */
     private $observation;  
+
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande; 
     
     public function __construct()
     {
@@ -171,5 +178,29 @@ class Engraissement
     public function getObservation()
     {
         return $this->observation;
+    }
+
+    /**
+     * Set bande
+     *
+     * @param \MR\BackOfficeBundle\Entity\Bande $bande
+     *
+     * @return Engraissement
+     */
+    public function setBande(\MR\BackOfficeBundle\Entity\Bande $bande)
+    {
+        $this->bande = $bande;
+
+        return $this;
+    }
+
+    /**
+     * Get bande
+     *
+     * @return \MR\BackOfficeBundle\Entity\Bande
+     */
+    public function getBande()
+    {
+        return $this->bande;
     }
 }

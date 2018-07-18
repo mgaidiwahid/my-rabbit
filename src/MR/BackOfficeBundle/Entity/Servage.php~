@@ -35,7 +35,12 @@ class Servage
      */
     private $poids_totale;
     
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
 
+    private $bande;  
     /**
      * Get id
      *
@@ -140,5 +145,29 @@ class Servage
     public function getIdLapinFemelle()
     {
         return $this->id_lapin_femelle;
+    }
+
+    /**
+     * Set femelle
+     *
+     * @param \MR\BackOfficeBundle\Entity\Lapin $femelle
+     *
+     * @return Servage
+     */
+    public function setFemelle(\MR\BackOfficeBundle\Entity\Lapin $femelle)
+    {
+        $this->femelle = $femelle;
+
+        return $this;
+    }
+
+    /**
+     * Get femelle
+     *
+     * @return \MR\BackOfficeBundle\Entity\Lapin
+     */
+    public function getFemelle()
+    {
+        return $this->femelle;
     }
 }

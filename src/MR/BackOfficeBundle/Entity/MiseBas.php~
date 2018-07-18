@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="misebas")
+ * @ORM\Entity(repositoryClass="MR\BackOfficeBundle\Repository\MiseBasRepository")
  */
 class MiseBas
 {
@@ -40,11 +41,19 @@ class MiseBas
    * @ORM\OneToOne(targetEntity="MR\BackOfficeBundle\Entity\Lapin", cascade={"persist"})
    */
    private $lapin;
+   
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande;       
   
     public function __construct()
     {
 
     $this->date_mise_bas = new \Datetime();
+    
     }     
     /**
      * Get id
@@ -174,5 +183,29 @@ class MiseBas
     public function getNombreRejetes()
     {
         return $this->nombre_rejetes;
+    }
+
+    /**
+     * Set lapin
+     *
+     * @param \MR\BackOfficeBundle\Entity\Lapin $lapin
+     *
+     * @return MiseBas
+     */
+    public function setLapin(\MR\BackOfficeBundle\Entity\Lapin $lapin = null)
+    {
+        return $this->lapin = $lapin;
+
+        
+    }
+
+    /**
+     * Get lapin
+     *
+     * @return \MR\BackOfficeBundle\Entity\Lapin
+     */
+    public function getLapin()
+    {
+        return $this->lapin;
     }
 }

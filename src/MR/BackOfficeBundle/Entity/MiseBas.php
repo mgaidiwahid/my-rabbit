@@ -41,6 +41,13 @@ class MiseBas
    * @ORM\OneToOne(targetEntity="MR\BackOfficeBundle\Entity\Lapin", cascade={"persist"})
    */
    private $lapin;
+   
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande;       
   
     public function __construct()
     {
@@ -200,5 +207,29 @@ class MiseBas
     public function getLapin()
     {
         return $this->lapin;
+    }
+
+    /**
+     * Set bande
+     *
+     * @param \MR\BackOfficeBundle\Entity\Bande $bande
+     *
+     * @return MiseBas
+     */
+    public function setBande(\MR\BackOfficeBundle\Entity\Bande $bande)
+    {
+        $this->bande = $bande;
+
+        return $this;
+    }
+
+    /**
+     * Get bande
+     *
+     * @return \MR\BackOfficeBundle\Entity\Bande
+     */
+    public function getBande()
+    {
+        return $this->bande;
     }
 }

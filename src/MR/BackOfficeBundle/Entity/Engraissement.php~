@@ -35,7 +35,19 @@ class Engraissement
      * @ORM\Column(name="observation", type="text")
      */
     private $observation;  
+
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande; 
     
+    public function __construct()
+    {
+
+    $this->date = new \Datetime();
+    }     
     /**
     
     /**
@@ -46,5 +58,125 @@ class Engraissement
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set numeroCage
+     *
+     * @param integer $numeroCage
+     *
+     * @return Engraissement
+     */
+    public function setNumeroCage($numeroCage)
+    {
+        $this->numero_cage = $numeroCage;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroCage
+     *
+     * @return integer
+     */
+    public function getNumeroCage()
+    {
+        return $this->numero_cage;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Engraissement
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set nombreLaperaux
+     *
+     * @param integer $nombreLaperaux
+     *
+     * @return Engraissement
+     */
+    public function setNombreLaperaux($nombreLaperaux)
+    {
+        $this->nombre_laperaux = $nombreLaperaux;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreLaperaux
+     *
+     * @return integer
+     */
+    public function getNombreLaperaux()
+    {
+        return $this->nombre_laperaux;
+    }
+
+    /**
+     * Set poids
+     *
+     * @param float $poids
+     *
+     * @return Engraissement
+     */
+    public function setPoids($poids)
+    {
+        $this->poids = $poids;
+
+        return $this;
+    }
+
+    /**
+     * Get poids
+     *
+     * @return float
+     */
+    public function getPoids()
+    {
+        return $this->poids;
+    }
+
+    /**
+     * Set observation
+     *
+     * @param string $observation
+     *
+     * @return Engraissement
+     */
+    public function setObservation($observation)
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return string
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 }

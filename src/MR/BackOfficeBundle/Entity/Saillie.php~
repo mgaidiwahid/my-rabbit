@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="saillie")
+ * @ORM\Entity(repositoryClass="MR\BackOfficeBundle\Repository\SaillieRepository")
  */
 class Saillie
 {
@@ -40,6 +41,13 @@ class Saillie
    */
 
     private $male;
+
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande;    
     
     /**
      * Get id

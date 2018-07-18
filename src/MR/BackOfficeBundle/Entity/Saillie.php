@@ -41,6 +41,13 @@ class Saillie
    */
 
     private $male;
+
+  /**
+   * @ORM\ManyToOne(targetEntity="MR\BackOfficeBundle\Entity\Bande" , cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+    private $bande;    
     
     /**
      * Get id
@@ -298,5 +305,29 @@ class Saillie
     public function getMale()
     {
         return $this->male;
+    }
+
+    /**
+     * Set bande
+     *
+     * @param \MR\BackOfficeBundle\Entity\Bande $bande
+     *
+     * @return Saillie
+     */
+    public function setBande(\MR\BackOfficeBundle\Entity\Bande $bande)
+    {
+        $this->bande = $bande;
+
+        return $this;
+    }
+
+    /**
+     * Get bande
+     *
+     * @return \MR\BackOfficeBundle\Entity\Bande
+     */
+    public function getBande()
+    {
+        return $this->bande;
     }
 }

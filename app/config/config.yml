@@ -104,7 +104,7 @@ easy_admin:
             - Bande
             - Saillie
             - MiseBas 
-            - Servage            
+            #- Servage            
             - Engraissement           
     assets:
         js: ['assets/js/jquery.datetimepicker.full.js', 'assets/js/initDatePicker.js']
@@ -223,13 +223,14 @@ easy_admin:
             class: MR\BackOfficeBundle\Entity\Saillie
             label: 'Saillie'
             list:
-                title: "Liste  des saillies"  
+                title: "Liste  des saillies"
+               
             form:
                 fields:
                     - femelle
                     - male
                     - palpation
-                    - { property: 'palpation', type: 'choice',type_options: {choices: {'Succés':'1', 'Echec':'0'}} }
+                    - { property: 'palpation', type: 'choice',type_options: {choices: {'Succés':'1', 'Echec':'0'}} }                    
                     - date_saillie
                     - bande
             new:

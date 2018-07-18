@@ -17,7 +17,12 @@
 
             <div class="info-box-content">
               <span class="info-box-text">nOMBRE DE SAILLIE</span>
-              <span class="info-box-number"><a href="?entity=Saillie">{{ nbr_saillie }}</a><small></small></span>
+              <span class="info-box-number">
+                  {% for nbr in nbr_saillie %}
+                  <a href="?entity=Saillie">{{ nbr[loop.index] }}</a> - 
+                  <a href="?entity=Bande">{{ nbr.libelle }}</a>
+                  {% endfor %}
+                  <small></small></span>
             </div>
             <!-- /.info-box-content -->
           </div>

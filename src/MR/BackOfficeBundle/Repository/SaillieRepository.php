@@ -12,8 +12,13 @@ class SaillieRepository extends EntityRepository
   { 
     return $this->createQueryBuilder('s')
                 ->select('COUNT(s)')
+                ->join('s.bande', 'b')
+                ->addSelect("b.libelle")
+                ->orderBy('s.bande', "DESC")
+                ->setMaxResults(1)
+                ->groupBy('s.bande')                              
                 ->getQuery()
-                ->getSingleScalarResult();
+                ->getResult();
   } 
     
     

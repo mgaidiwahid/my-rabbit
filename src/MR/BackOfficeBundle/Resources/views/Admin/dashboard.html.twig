@@ -78,7 +78,72 @@
         <!-- /.col -->
       </div>
     
-    
+<div class="row">
+        <div class="col-md-12">
+          <div class="box"><!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    <strong>Ventes: {{ bande_libelle }}</strong>
+                  </p>
+                  <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col --><!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- ./box-body -->
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{ succes_pourcentage }}%</span>
+                    <h5 class="description-header">&nbsp;</h5>
+                    <span class="description-text">Teaux de réussite saillie</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> {{ pre_sevrage_pourcentage }}%</span>
+                    <h5 class="description-header">&nbsp;</h5>
+                    <span class="description-text">Teaux</span> DE MORTALITE AVANT SEVRAGE</div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block border-right">
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{ post_sevrage_pourcentage }}%</span>
+                    <h5 class="description-header">&nbsp;</h5>
+                    <span class="description-text">Teaux</span> DE MORTALITE APRES SERVAGE</div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 col-xs-6">
+                  <div class="description-block">
+                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i></span>
+                    <h5 class="description-header">
+                        {% if nbr_lapains_vendus is null %} 
+                            0
+                        {% else %} 
+                            {{ nbr_lapains_vendus }}
+                         {% endif %}    
+                    </h5>
+                    <span class="description-text">NOMBRE DE LAPIN SORTIE CE MOIS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>    
     
 {% endblock %}
 

@@ -12,6 +12,7 @@ class BandeRepository extends EntityRepository
   { 
     return $this->createQueryBuilder('b')
                 ->select('b.id')
+                ->addSelect('b.libelle')
                 ->orderBy('b.id', "DESC")
                 ->setMaxResults(2)                            
                 ->getQuery()

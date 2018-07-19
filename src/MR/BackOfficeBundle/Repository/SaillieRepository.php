@@ -21,7 +21,29 @@ class SaillieRepository extends EntityRepository
                 ->getResult();
   } 
     
+  public function getTotalSaillieBande($bande_id){
+      
+    return $this->createQueryBuilder('s')
+                ->select('COUNT(s)')
+                ->join('s.bande', 'b')
+                ->where('b.id = :bande_id')
+                ->setParameter('bande_id', $bande_id)
+                ->getQuery()
+                ->getSingleScalarResult();
     
+  }  
+
+  public function getTotalSuccesSaillieByBande($bande_id){
+      
+    return $this->createQueryBuilder('s')
+                ->select('COUNT(s)')
+                ->join('s.bande', 'b')
+                ->where('b.id = :bande_id')
+                ->andwhere('s.palpation = 1')
+                ->setParameter('bande_id', $bande_id)
+                ->getQuery()
+                ->getSingleScalarResult();
     
+  }   
     
 }

@@ -22,7 +22,16 @@ class MiseBasRepository extends EntityRepository
                 ->getResult();    
   } 
     
-    
+   public function getTotalLapinsVivantsAdaptesByBande($bande_id)
+  { 
+    return $this->createQueryBuilder('m')
+                ->select('(SUM(m.nombre_vivants)+SUM(m.nombre_adoptes))')
+                ->join('m.bande', 'b')
+                ->where('b.id = :bande_id')
+                ->setParameter('bande_id', $bande_id)                             
+                ->getQuery()
+                ->getSingleScalarResult();
+  }    
     
     
 }

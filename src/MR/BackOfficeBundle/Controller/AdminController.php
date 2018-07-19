@@ -32,9 +32,22 @@ class AdminController extends BaseAdminController
             $repository = $em->getRepository('MRBackOfficeBundle:MiseBas');
             $nbr_misebas = $repository->getCountMiseBas(); 
             
+            $repository = $em->getRepository('MRBackOfficeBundle:Engraissement');
+            $nbr_engraissement = $repository->getCountEngraissement();
+            
+            /**
+             * Get Last Before Bande ID
+             */
+            $repository = $em->getRepository('MRBackOfficeBundle:Bande');
+            $last_bandes = $repository->getLastsBandes();                      
+            foreach($last_bandes as  $key => $value){
+              if($key == 1) $bande_id = $last_bandes[$key]['id'];
+            }
+            
             return $this->render('MRBackOfficeBundle:Admin:dashboard.html.twig',array(
                                  'nbr_saillie' => $nbr_saillie,
-                                 'nbr_misebas' => $nbr_misebas));
+                                 'nbr_misebas' => $nbr_misebas,
+                                 'nbr_engraissement' => $nbr_engraissement));
             
         }
 

@@ -48,21 +48,6 @@
         </div>
         <!-- /.col -->
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">nOMBRE LAPIN EN SERVAGE</span>
-              <span class="info-box-number">760</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
@@ -70,7 +55,21 @@
 
             <div class="info-box-content">
               <span class="info-box-text">nOMBRE DE LAPINS EN ENGRAISSEMENT</span>
-              <span class="info-box-number">750</span>
+              <span class="info-box-number">
+                 {% for nbr in nbr_engraissement %}
+                    {% if nbr.nombre_laperaux_vente is null %}
+                        {% if nbr.nombre_laperaux is null %} 
+                            {{ nbr.nombre_laperaux_sevrage }} -
+                        {% else %}
+                            {{ nbr.nombre_laperaux }} -
+                        {% endif %}    
+                    {% else %}
+                        {{ nbr.nombre_laperaux_vente }} -
+                    {% endif %}
+                    
+                  <a href="?entity=Bande">{{ nbr.libelle }}</a>
+                  {% endfor %}
+              </span>
             </div>
             <!-- /.info-box-content -->
           </div>

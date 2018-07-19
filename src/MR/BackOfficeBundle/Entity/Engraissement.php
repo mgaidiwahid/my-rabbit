@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="engraissement")
+ * @ORM\Entity(repositoryClass="MR\BackOfficeBundle\Repository\EngraissementRepository")
  */
 class Engraissement
 {
@@ -24,13 +25,31 @@ class Engraissement
      */
     private $date;
     /**
-     * @ORM\Column(name="nombre_laperaux", type="integer")
+     * @ORM\Column(name="nombre_laperaux_sevrage", type="integer")
+     */
+    private $nombre_laperaux_sevrage;  
+    /**
+     * @ORM\Column(name="poids_sevrage", type="float")
+     */
+    private $poids_sevrage; 
+    
+    /**
+     * @ORM\Column(name="nombre_laperaux", type="integer", nullable=true)
      */
     private $nombre_laperaux;  
     /**
-     * @ORM\Column(name="poids", type="float")
+     * @ORM\Column(name="poids", type="float", nullable=true)
      */
-    private $poids;  
+    private $poids;   
+    
+    /**
+     * @ORM\Column(name="nombre_laperaux_vente", type="integer", nullable=true)
+     */
+    private $nombre_laperaux_vente;  
+    /**
+     * @ORM\Column(name="poids_vente", type="float", nullable=true)
+     */
+    private $poids_vente;     
     /**
      * @ORM\Column(name="observation", type="text")
      */
@@ -202,5 +221,101 @@ class Engraissement
     public function getBande()
     {
         return $this->bande;
+    }
+
+    /**
+     * Set nombreLaperauxSevrage
+     *
+     * @param integer $nombreLaperauxSevrage
+     *
+     * @return Engraissement
+     */
+    public function setNombreLaperauxSevrage($nombreLaperauxSevrage)
+    {
+        $this->nombre_laperaux_sevrage = $nombreLaperauxSevrage;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreLaperauxSevrage
+     *
+     * @return integer
+     */
+    public function getNombreLaperauxSevrage()
+    {
+        return $this->nombre_laperaux_sevrage;
+    }
+
+    /**
+     * Set poidsSevrage
+     *
+     * @param float $poidsSevrage
+     *
+     * @return Engraissement
+     */
+    public function setPoidsSevrage($poidsSevrage)
+    {
+        $this->poids_sevrage = $poidsSevrage;
+
+        return $this;
+    }
+
+    /**
+     * Get poidsSevrage
+     *
+     * @return float
+     */
+    public function getPoidsSevrage()
+    {
+        return $this->poids_sevrage;
+    }
+
+    /**
+     * Set nombreLaperauxVente
+     *
+     * @param integer $nombreLaperauxVente
+     *
+     * @return Engraissement
+     */
+    public function setNombreLaperauxVente($nombreLaperauxVente)
+    {
+        $this->nombre_laperaux_vente = $nombreLaperauxVente;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreLaperauxVente
+     *
+     * @return integer
+     */
+    public function getNombreLaperauxVente()
+    {
+        return $this->nombre_laperaux_vente;
+    }
+
+    /**
+     * Set poidsVente
+     *
+     * @param float $poidsVente
+     *
+     * @return Engraissement
+     */
+    public function setPoidsVente($poidsVente)
+    {
+        $this->poids_vente = $poidsVente;
+
+        return $this;
+    }
+
+    /**
+     * Get poidsVente
+     *
+     * @return float
+     */
+    public function getPoidsVente()
+    {
+        return $this->poids_vente;
     }
 }
